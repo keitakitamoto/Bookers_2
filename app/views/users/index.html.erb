@@ -1,0 +1,38 @@
+<span class= "error" ><% if @book.errors.any? %>
+ <h3><%= @book.errors.count %>errors prohibited this obj from being saved:</h3>
+<% @book.errors.full_messages.each do |message| %>
+ <li><%= message %></li>
+<% end %>
+<% end %></span>
+<p id="notice"></p>
+ <div class="container">
+  <div class="row">
+   <div class="col-md-3">
+    <%= render'users/list',user:@user,book:@book %>
+   </div>
+   <div class="offset-md-1 col-md-8">
+    <h2>Users</h2>
+    <table class="table table-hover table-inverse">
+     <thead>
+      <tr>
+       <th>image</th>
+       <th>name</th>
+       <th colspan="3"></th>
+      </tr>
+     </thead>
+    <tbody>
+     <% @users.each do |user| %>
+     <!--すべてのuserから１つずつすべての情報をとりだす-->
+     <tr>
+      <td><%= attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" %></td>
+      <td><%= user.name %></td>
+      <td><%= link_to "Show",user_path(user.id) %></td>
+      <!--user_path(user.id)でページ名とuserの情報を定義-->
+     </tr>
+     <% end %>
+    </tbody>
+    </table>
+   </div>
+  </div>
+ </div>
+ <!--divタグやendに注意-->

@@ -1,0 +1,15 @@
+      <h1>User info</h1>
+      <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+      <table class='table table-hover table-inverse'>
+       <tr><td><b>name:<%= user.name %></b></td></tr>
+       <tr><td><b>introduction:<%= user.introduction %></b></td></tr>
+      </table>
+       <p><%= link_to " ",edit_user_path(user), class:"btn btn-outline-secondary btn-block fas fa-user-cog edit_user_16399" %></p>
+       <h1>New book</h1>
+      <%= form_with model:book,local:true do |f| %>
+        <%= f.label :Title %></br>
+        <%= f.text_field :title,class:"form-control" %></br>
+        <%= f.label :Opinion %></br>
+        <%= f.text_field :body,class:"form-control" %></br>
+        <%= f.submit'Create Book',class:'btn btn-success' %>
+       <% end %>
